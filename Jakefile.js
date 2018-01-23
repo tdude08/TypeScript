@@ -230,8 +230,8 @@ var builtLocalCompiler = path.join(builtLocalDirectory, compilerFilename);
 
 /**
  * Executes the compiler
- * @param {boolean} useBuiltCompiler 
- * @param {string[]} args 
+ * @param {boolean} useBuiltCompiler
+ * @param {string[]} args
  * @param {function([Error]): void} [callback] A callback to execute after the compilation process ends.
  */
 function execCompiler(useBuiltCompiler, args, callback) {
@@ -287,10 +287,10 @@ function compile(outFile, sources, prefixes, useBuiltCompiler, opts, callback) {
     var startCompileTime = mark();
     opts = opts || {};
     var options = [
-        "--noImplicitAny", 
-        "--noImplicitThis", 
-        "--alwaysStrict", 
-        "--noEmitOnError", 
+        "--noImplicitAny",
+        "--noImplicitThis",
+        "--alwaysStrict",
+        "--noEmitOnError",
         "--pretty",
         "--newLine LF"
     ];
@@ -378,18 +378,18 @@ function compile(outFile, sources, prefixes, useBuiltCompiler, opts, callback) {
                     prependFile(prefixes[i], outFile);
                 }
             }
-    
+
             if (callback) {
                 callback();
             }
-    
+
             complete();
         }
         measure(startCompileTime);
     });
 }
 
-/** 
+/**
  * Compiles a file from a list of sources
  * @param {string} outFile the target file name
  * @param {string[]} sources an array of the names of the source files
@@ -866,7 +866,7 @@ var run = path.join(builtLocalDirectory, "run.js");
 compileFile(
     /*outFile*/ run,
     /*source*/ harnessSources,
-    /*prereqs*/[builtLocalDirectory, tscFile, tsserverLibraryFile, "typemock"].concat(libraryTargets).concat(servicesSources).concat(harnessSources),
+    /*prereqs*/[builtLocalDirectory, tscFile, tsserverLibraryFile, "private-packages"].concat(libraryTargets).concat(servicesSources).concat(harnessSources),
     /*prefixes*/[],
     /*useBuiltCompiler:*/ true,
     /*opts*/ { types: ["node", "mocha", "chai"], lib: "es6" });
